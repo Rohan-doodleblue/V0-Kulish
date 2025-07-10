@@ -1,29 +1,33 @@
 "use client"
+import { useParams } from "next/navigation"
 
-export default function AdminUsers() {
+export default function TenantUsers() {
+  const params = useParams()
+  const tenant = params.tenant as string
+
   const users = [
     {
       id: "1",
-      name: "John Doe",
-      email: "john@example.com",
-      role: "super_admin",
-      tenant: "System",
+      name: "Alice Johnson",
+      email: `alice@${tenant}.com`,
+      role: "admin",
+      department: "Management",
       status: "active",
     },
     {
       id: "2",
-      name: "Jane Smith",
-      email: "jane@acme.com",
-      role: "tenant_admin",
-      tenant: "Acme Corp",
+      name: "Bob Wilson",
+      email: `bob@${tenant}.com`,
+      role: "user",
+      department: "Sales",
       status: "active",
     },
     {
       id: "3",
-      name: "Bob Johnson",
-      email: "bob@techsolutions.com",
+      name: "Carol Davis",
+      email: `carol@${tenant}.com`,
       role: "user",
-      tenant: "Tech Solutions",
+      department: "Marketing",
       status: "inactive",
     },
   ]
@@ -31,7 +35,7 @@ export default function AdminUsers() {
   return (
     <div>
       <div className="flex justify-between items-center mb-8">
-        <h1 className="text-3xl font-bold text-gray-900">User Management</h1>
+        <h1 className="text-3xl font-bold text-gray-900">Team Members - {tenant}</h1>
         <button className="btn btn-primary">➕ Add User</button>
       </div>
 
@@ -44,7 +48,7 @@ export default function AdminUsers() {
                   <th>Name</th>
                   <th>Email</th>
                   <th>Role</th>
-                  <th>Tenant</th>
+                  <th>Department</th>
                   <th>Status</th>
                   <th>Actions</th>
                 </tr>
@@ -55,19 +59,11 @@ export default function AdminUsers() {
                     <td className="font-medium">{user.name}</td>
                     <td>{user.email}</td>
                     <td>
-                      <span
-                        className={`badge ${
-                          user.role === "super_admin"
-                            ? "badge-red"
-                            : user.role === "tenant_admin"
-                              ? "badge-blue"
-                              : "badge-green"
-                        }`}
-                      >
-                        {user.role.replace("_", " ").toUpperCase()}
+                      <span className={`badge ${user.role === "admin" ? "badge-blue" : "badge-green"}`}>
+                        {user.role.toUpperCase()}
                       </span>
                     </td>
-                    <td>{user.tenant}</td>
+                    <td>{user.department}</td>
                     <td>
                       <span className={`badge ${user.status === "active" ? "badge-green" : "badge-red"}`}>
                         {user.status.toUpperCase()}

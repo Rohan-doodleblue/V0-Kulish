@@ -1,7 +1,6 @@
 import type React from "react"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
-import { AntdRegistry } from "@ant-design/nextjs-registry"
 import { StoreProvider } from "./store-provider"
 import "./globals.css"
 
@@ -21,9 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <AntdRegistry>
-          <StoreProvider>{children}</StoreProvider>
-        </AntdRegistry>
+        <StoreProvider>{children}</StoreProvider>
       </body>
     </html>
   )

@@ -1,11 +1,8 @@
 "use client"
-import { Card, Typography, Empty } from "antd"
 import { useParams } from "next/navigation"
 import { useAppDispatch } from "@/app/lib/hooks"
 import { setCurrentTenant } from "@/app/lib/features/tenant/tenantSlice"
 import { useEffect } from "react"
-
-const { Title } = Typography
 
 export default function TenantDashboard() {
   const params = useParams()
@@ -25,19 +22,17 @@ export default function TenantDashboard() {
 
   return (
     <div>
-      <Title level={2}>Tenant Dashboard - {tenant}</Title>
+      <h1 className="text-3xl font-bold text-gray-900 mb-8">Tenant Dashboard - {tenant}</h1>
 
-      <Card style={{ textAlign: "center", minHeight: "400px" }}>
-        <Empty
-          description={
-            <span>
-              This is the tenant dashboard for <strong>{tenant}</strong>
-              <br />
-              Content will be implemented here
-            </span>
-          }
-        />
-      </Card>
+      <div className="card text-center py-16">
+        <div className="card-body">
+          <div className="text-6xl mb-4">📊</div>
+          <h2 className="text-xl font-semibold text-gray-700 mb-2">
+            This is the tenant dashboard for <strong>{tenant}</strong>
+          </h2>
+          <p className="text-gray-500">Content will be implemented here</p>
+        </div>
+      </div>
     </div>
   )
 }
