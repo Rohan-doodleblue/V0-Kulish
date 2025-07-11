@@ -43,7 +43,7 @@ export default function SuperAdminLayout({ children }: SuperAdminLayoutProps) {
       {/* Sidebar */}
       <div className="w-64 bg-white shadow-sm border-r border-gray-200">
         <div className="p-4 border-b border-gray-200">
-          <h1 className="text-xl font-bold text-blue-600">MyApp</h1>
+          <h1 className="text-xl font-bold text-blue-600">bluedoodle</h1>
         </div>
         <nav className="mt-4">
           {menuItems.map((item) => (
